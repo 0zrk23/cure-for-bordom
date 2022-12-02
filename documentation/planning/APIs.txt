@@ -1,0 +1,2 @@
+Bored API: https://www.boredapi.com/
+Jokes API: https://github.com/15Dkatz/official_joke_api
