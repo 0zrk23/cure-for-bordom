@@ -1,0 +1,33 @@
+.home{
+    /* border: 1px solid black; */
+}
+
+.test{
+    border: 1px solid black;
+}
+
+.home-title{
+    text-align: center;
+    /* font-size: 30px;
+    padding: 1% 0; */
+}
+
+.home-message{
+    margin-bottom: 1%;
+}
+
+.or{
+    display: inline;
+    text-align: center;
+    padding: 0 6%;
+    /* vertical-align: text-bottom; */
+    /* margin-top: 0.5%; */
+    /* margin-bottom: auto; */
+    /* border: 1px solid black */
+}
+
+.home-btn{
+    width: 300px !important;
+    height: 75px !important;
+    vertical-align: center !important;
+}
