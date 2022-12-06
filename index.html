@@ -11,27 +11,100 @@
         <title>Bored? Here's a Cure</title>
     </head>
     <body>
+      <!-- This is the nav bar that can take you to the home page -->
         <nav>
-            <div class="nav-wrapper red lighten-2">
+            <div class="nav-wrapper teal lighten-2">
               <a href="#" class="brand-logo left">Cure Your Boredom</a>
               <ul id="nav-mobile" class="right">
-                <li class="home-button"><a href="#">Home</a></li>
+                <li class="home-btn"><a href="#">Home</a></li>
               </ul>
             </div>
           </nav>
+        <!-- This is the home container. It contains the main page of the web app -->
         <div class="home">
             <h2 class="home-title">How did you find this?</h2>
             <p class="home-message center-align">Click on one of the buttons to cure your boredom</p>
             <div class="btn-container-home container center-align">
-                <a data-cure="Joke" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons left">sentiment_very_satisfied</i>Jokes</a>
+                <a data-cure="Joke" class="waves-effect teal lighten-2 btn-large cure-btn"><i class="material-icons left">sentiment_very_satisfied</i>Jokes</a>
                 <p class="or">Or</p>
-                <a data-cure="Activity" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons right">directions_run</i>Activities</a>
+                <a data-cure="Activity" class="waves-effect teal lighten-2 btn-large cure-btn"><i class="material-icons right">directions_run</i>Activities</a>
             </div>
         </div>
-        <div class="selected-cure">
+        <!-- This is the container for the selected type of cure, containing the saved items from the past and the forms for the cure to generate new cures -->
+        <div class="selected-cure row">
+          <h2 data-cure="Joke" class="col s12 m12 center-align">You Selected <span class="cure-type">Joke</span></h2>
+          <!-- This is the container for all of the forms for the cures -->
+          <div class="col s12 m3">
+            <div class="row">
+              <a data-cure="Joke" class="waves-effect teal lighten-2 btn-large col s12 random-btn">Generate Random <span class="cure-type">Joke</span></a>
+              <div class="col s12">
+                <!-- This is the forms for the jokes -->
+                <div class="row joke-forms">
+                  
+                  <div class="joke-type-form input-field col s12">
+                    
+                    <select>
+                      <option value="" disabled selected>Select Type of Joke</option>
+                      <option value="">Random Type of Joke</option>
+                      <option value="general">General Jokes</option>
+                      <option value="knock-knock">Knock-Knock Jokes</option>
+                      <option value="programming">Programming Jokes</option>
+                    </select>
+                    <label>Select Type of Joke</label>
+                  </div>
+                </div>
+                <!-- This is the container for the activities -->
+                <div class="row activity-forms">
+                  <!-- This is the form for selecting type of activity -->
+                  <div class="activity-type-form input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Select Type of Activity</option>
+                      <option value="">Random Type of Activity</option>
+                      <option value="educational">Educational Activity</option>
+                      <option value="recreational">Recreational Activity</option>
+                      <option value="social">Social Activity</option>
+                      <option value="diy">DIY Activity</option>
+                      <option value="charity">Charitable Activity</option>
+                      <option value="cooking">Cooking Activity</option>
+                      <option value="relaxation">Relaxing Activity</option>
+                      <option value="music">Musical Activity</option>
+                      <option value="busywork">Busywork Activity</option>
+                    </select>
+                    <label>Select Type of Acticity</label>
+                  </div>
+                  <!-- This is the form for selecting how many particicpants -->
+                  <form class="col s12 range-padding" action="#">
+                    <label for="participants" class="range-label">Select Amount of Participants</label>
+                    <p class="range-field">
+                      <input class="participants-form" type="range" id="participants" min="0" max="4" />
+                    </p>
+                  </form>
+                  <!-- This is the form for selecting maximum price -->
+                  <form class="col s12 range-padding" action="#">
+                    <label for="max-price"  class="range-label">Select Max Activity Price</label>
+                    <p class="range-field">
+                      <input class="max-price-form" type="range" id="max-price" min="0" max="100" />
+                    </p>
+                  </form>
 
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- This is the container for the results of the cure generation -->
+          <div class="test col s12 m9">
+            <div class="row results-display">
+              Results Place holder
+            </div>
+          </div>
+          <!-- THis is the container for the saved cures for the selected type of cure -->
+          <div class="row col s12 test">
+            Saved cure place holder
+          </div>
         </div>
-        <a data-cure="Joke" class="waves-effect red lighten-2 btn-large random-btn">Random <span class="cure-type">Joke</span></a>
+
+        
+        <!-- <a data-cure="Joke" class="waves-effect red lighten-2 btn-large random-btn">Random <span class="cure-type">Joke</span></a> -->
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="./assets/js/script-activities.js"></script>
