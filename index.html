@@ -4,15 +4,39 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="./assets/css/reset.css">
         <link rel="stylesheet" href="./assets/css/style.css">
-        <link 
-            rel="stylesheet" 
-            href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" 
-            integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" 
-            crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <title>Bored? Here's a Cure</title>
     </head>
     <body>
-        <button class="pure-button" id="random">Random <span id="cure-type"></span></button>
+        <nav>
+            <div class="nav-wrapper red lighten-2">
+              <a href="#" class="brand-logo left">Cure Your Boredom</a>
+              <ul id="nav-mobile" class="right">
+                <li class="home-button"><a href="#">Home</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div class="home">
+            <h2 class="home-title">How did you find this?</h2>
+            <p class="home-message center-align">Click on one of the buttons to cure your boredom</p>
+            <div class="btn-container-home container center-align">
+                <a data-cure="Joke" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons left">sentiment_very_satisfied</i>Jokes</a>
+                <p class="or">Or</p>
+                <a data-cure="Activity" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons right">directions_run</i>Activities</a>
+            </div>
+        </div>
+        <div class="selected-cure">
+
+        </div>
+        <a data-cure="Joke" class="waves-effect red lighten-2 btn-large random-btn">Random <span class="cure-type">Joke</span></a>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="./assets/js/script-activities.js"></script>
+        <script src="./assets/js/script-jokes.js"></script>
+        <script src="./assets/js/script-home.js"></script>
+        
     </body>
 </html>
