@@ -23,15 +23,15 @@
             <h2 class="home-title">How did you find this?</h2>
             <p class="home-message center-align">Click on one of the buttons to cure your boredom</p>
             <div class="btn-container-home container center-align">
-                <a class="waves-effect red lighten-2 btn-large home-btn"><i class="material-icons left">sentiment_very_satisfied</i>Jokes</a>
+                <a data-cure="Joke" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons left">sentiment_very_satisfied</i>Jokes</a>
                 <p class="or">Or</p>
-                <a class="waves-effect red lighten-2 btn-large home-btn"><i class="material-icons right">directions_run</i>Activities</a>
+                <a data-cure="Activity" class="waves-effect red lighten-2 btn-large cure-btn"><i class="material-icons right">directions_run</i>Activities</a>
             </div>
         </div>
-        <!-- <div class="cure-selected">
+        <div class="selected-cure">
 
-        </div> -->
-        <!-- <button class="pure-button" id="random">Random <span id="cure-type"></span></button> -->
+        </div>
+        <a data-cure="Joke" class="waves-effect red lighten-2 btn-large random-btn">Random <span class="cure-type">Joke</span></a>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="./assets/js/script-activities.js"></script>
