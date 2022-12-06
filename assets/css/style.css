@@ -4,6 +4,7 @@
 
 .test{
     border: 1px solid black;
+    /* padding: 10% 0; */
 }
 
 .home-title{
@@ -26,8 +27,22 @@
     /* border: 1px solid black */
 }
 
-.home-btn{
+/* .home-btn{
     width: 300px !important;
     height: 75px !important;
     vertical-align: center !important;
+} */
+/* .activity-type-form{
+    padding-top: 10% !important;
+} */
+.range-padding{
+    padding-top:2% !important;
+}
+
+.random-btn{
+    margin-bottom: 2% !important;
+}
+
+.range-label{
+    padding-left: -2.5% !important;
 }
