@@ -28,8 +28,16 @@ cureBtn.click(function(event){
     } else {
         jokeForms.hide();
         activityForms.show();
+        
+        $(".select-wrapper li").on("click", function(event){
+            console.log($(this).children("span").text());
+        })
     }
 });
+
+// switch (($(this).children("span").text()))
+
+// case x:
 
 homeBtn.click(function(){
     homeContainer.show();
