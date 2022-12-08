@@ -46,3 +46,26 @@
 .range-label{
     padding-left: -2.5% !important;
 }
+
+.results-container{
+    
+}
+
+.results-display{
+    margin: 1% !important;
+    padding: 1% !important;
+    text-align: center;
+    background: #96d6e1;
+    border-radius: 10px;
+}
+
+.save-btn{
+    text-align: center !important;
+    padding: 0 -10% !important;
+    margin-left: 1% !important;
+}
+
+.results{
+    font-size: 200%;
+    font-weight: 200%;
+}
