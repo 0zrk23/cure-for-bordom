@@ -63,9 +63,20 @@
     text-align: center !important;
     padding: 0 -10% !important;
     margin-left: 1% !important;
+    color: white !important;
+}
+
+.save-btn i{
+    text-decoration: none;
+    color: white !important;
 }
 
 .results{
     font-size: 200%;
     font-weight: 200%;
+}
+
+.saved-cure{
+    padding: 1% !important;
+    border-radius: 10px;
 }
