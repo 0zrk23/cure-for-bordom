@@ -31,10 +31,6 @@ cureBtn.click(function(event){
     }
 });
 
-// switch (($(this).children("span").text()))
-
-// case x:
-
 homeBtn.click(function(){
     homeContainer.show();
     selectedContainer.hide();
