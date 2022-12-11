@@ -110,9 +110,10 @@ function appendSavedData(data){
 }
 
 //this event listener will delete the saved container that it is attached to
-$('saved-cure-container').click(".del-btn",function(event){
+delBtnEl.click(function(event){
     event.preventDefault();
-    
+    console.log("i'm here")
+    // savedResults.remove(this);
 })
 
 $(document).ready(function(){

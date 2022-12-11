@@ -83,7 +83,7 @@ function renderError() {
     error.addClass("results");
     $(".results-display").append(error);
     $(".results-display").text("We do not havea joke for this")
-    console.log(data.error);
+    // console.log(data.error);
 }
 
 function renderResults(data) {
