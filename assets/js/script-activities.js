@@ -88,7 +88,7 @@ function renderError() {
     error.addClass("results");
     $(".results-display").append(error);
     $(".results").text("Results do not exist for these parameters. Try different values.");
-    console.log(data.error);
+    // console.log(data.error);
 
 
 }
