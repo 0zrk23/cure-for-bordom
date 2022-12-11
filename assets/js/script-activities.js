@@ -7,6 +7,7 @@ var price = $('.max-price-form');
 var saveBtn = $('.save-btn');
 var storedData = [];
 
+
 init() 
 
 function init() {
@@ -19,7 +20,7 @@ function getStoredActivities() {
         localStorage.setItem("activities", "");
         return;
     } 
-    storedData = JSON.parse(localStorage.activities);
+    storedData = JSON.parse(localStorage.getItem("activities"));
 
 }
 
@@ -53,7 +54,6 @@ function fetchAPI() {
             
         }
         
-        document.getElementsByClassName(".saved-cure").innerHTML = localStorage.getItem(data);
         })
     }}
     )};
@@ -64,20 +64,21 @@ saveBtn.click(function(event) {
 }
 )
 
-
-
 function saveData() { 
     if (!localStorage.generatedActivity) {
         return;
     } 
-    var generatedActivity = JSON.parse(localStorage.generatedActivity);
+    var generatedActivity = JSON.parse(localStorage.getItem("generatedActivity"));
     if (storedData.includes(generatedActivity)) {
         return;
     }
     
     storedData.push(generatedActivity);
-    console.log(storedData)
+    // console.log(storedData)
     localStorage.activities = JSON.stringify(storedData)
+
+    
+   
 
 }
 
@@ -103,45 +104,6 @@ function renderResults(data) {
     console.log(data.activity);
 } 
 
-
-
-// $(".activity-type-form").click(displayActivities {
-//     console.log("Nick")
-//     +
-// }
-
-
-
-// $(".participants-form").click
-// $(".max-price-form")
-
-
-// function displayActivities(data) {
-//     const options = data.random[0];
-//     optionsDiv = $(".results-container");
-// }
-
-// const activityName = random.choices;
-// const line = document.createElement("");
-// line.innerHTML = activityName;
-// optionsDiv.(line);
-// console.log(activityName);
-// console.log(line);
-// console.log(optionsDiv);
-
-
-// .then(function (data) {
-//     displayActivities(data);
-// })} console.log(data);
-
-
-// .catch((error) => console.error("Fetch Error:", error));
-
-
-
-
-// localStorage.setItem("activities", "input");
-// var completed = localStorage.getItem("activities");
 
 
 
