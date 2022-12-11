@@ -8,6 +8,7 @@ let activityForms = $(".activity-forms");
 let homeBtn = $('.home-btn');
 let savedResults = $('.saved-results')
 let savedData = [];
+let delBtnEl = $(".del-btn");
 
 init();
 
@@ -107,6 +108,12 @@ function appendSavedData(data){
     //append the individual saved item to the saved results container
     savedResults.append(savedContainer);
 }
+
+//this event listener will delete the saved container that it is attached to
+$('saved-cure-container').click(".del-btn",function(event){
+    event.preventDefault();
+    
+})
 
 $(document).ready(function(){
     $('select').formSelect();
