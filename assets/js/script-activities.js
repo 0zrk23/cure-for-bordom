@@ -23,7 +23,7 @@ function getStoredActivities() {
         localStorage.setItem("activities", storedData);
         return;
     } 
-    console.log("imhere")
+    // console.log("imhere")
     storedData = JSON.parse(localStorage.getItem("activities"));
 
 }
