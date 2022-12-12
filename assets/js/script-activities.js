@@ -15,6 +15,8 @@ var storedData = [];
 //     getStoredActivities();
 //     getStoredJokes();
 // } 
+    getStoredActivities();
+    
 
 function getStoredActivities() {
     if (!localStorage.activities) {

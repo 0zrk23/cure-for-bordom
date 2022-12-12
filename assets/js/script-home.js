@@ -15,8 +15,8 @@ init();
 function init(){
     homeContainer.show();
     selectedContainer.hide();
-    getStoredActivities();
-    getStoredJokes();
+    // getStoredActivities();
+    // getStoredJokes();
 }
 
 cureBtn.click(function(event){
