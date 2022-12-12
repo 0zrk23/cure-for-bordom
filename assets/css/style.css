@@ -78,10 +78,14 @@
 
 .saved-cure{
     padding: 1% !important;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .saved-Activity-container,
 .saved-Joke-container{
     margin: 5px 0 !important;
+}
+
+.del-btn{
+    border-radius: 50px !important;
 }

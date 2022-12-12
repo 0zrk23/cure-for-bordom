@@ -92,11 +92,11 @@ function appendSavedData(data,index){
     // console.log(index);
     let savedContainer = $('<div>');
     let cureType = randomBtnEl.attr("data-cure");
-    savedContainer.addClass("col s12 saved-" + cureType + "-container valign-wrapper " + cureType + "-" + index);
+    savedContainer.addClass("col s12 teal ligten-4 saved-" + cureType + "-container valign-wrapper " + cureType + "-" + index);
     savedContainer.attr("index-number", "" + index);
     //this section creates the saved cure container i.e. the section where all of the saved cure lines go
     let savedCure = $('<div>');
-    savedCure.addClass("saved-cure col s11 teal ligten-4 center-align");
+    savedCure.addClass("saved-cure col s11 center-align");
     //append this section to the saved Container
     savedContainer.append(savedCure);
     //this section creates the delete button for the saved item
