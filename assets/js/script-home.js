@@ -65,11 +65,11 @@ function renderSavedData(){
     
     if(cureType === "Activity"){
         // check if there is any local storage for activities
-        savedData = JSON.parse(localStorage.activities);
         if (savedData.length === 0) {
             appendSavedData(["There are currently no saved activities.","Use some of the inputs above to generate a random activity"]);
             return;
         }
+        savedData = JSON.parse(localStorage.activities);
         //for each of the saved information, append it to the display section
         for(let i = 0; i < savedData.length; i++){
             appendSavedData([savedData[i]],i);
@@ -77,7 +77,6 @@ function renderSavedData(){
     } else {
         // check if there is any local storage for jokes
         //  console.log("imhere");
-        savedData = JSON.parse(localStorage.jokes);
         if (savedData.length === 0) {
             appendSavedData(["There are currently no saved jokes.","Use some of the inputs above to generate a random joke"]);
             return;
