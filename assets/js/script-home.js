@@ -177,7 +177,7 @@ function removeData(cureType,index){
         // console.log(storedJokes[index]);
         storedJokes.splice(index,1)
         // console.log(storedJokes);
-        localStorage.activities = JSON.stringify(storedJokes);
+        localStorage.jokes = JSON.stringify(storedJokes);
     }
 }
 
