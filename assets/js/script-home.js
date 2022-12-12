@@ -60,20 +60,23 @@ function renderSavedData(){
     savedResults.empty();
     let cureType = randomBtn.attr("data-cure");
     //if the cure type is an activity or joke, then pull the saved data from local storage and render each of the saved items
+    
     if(cureType === "Activity"){
         // check if there is any local storage for activities
-        if (!localStorage.activities) {
+        savedData = JSON.parse(localStorage.activities);
+        if (savedData.length === 0) {
             appendSavedData(["There are currently no saved activities.","Use some of the inputs above to generate a random activity"]);
             return;
         }
-        savedData = JSON.parse(localStorage.activities);
         //for each of the saved information, append it to the display section
         for(let i = 0; i < savedData.length; i++){
             appendSavedData([savedData[i]],i);
         }
     } else {
         // check if there is any local storage for jokes
-        if (!localStorage.jokes) {
+         console.log("imhere");
+        savedData = JSON.parse(localStorage.jokes);
+        if (savedData.length === 0) {
             appendSavedData(["There are currently no saved jokes.","Use some of the inputs above to generate a random joke"]);
             return;
         }
@@ -92,7 +95,7 @@ function appendSavedData(data,index){
     // console.log(index);
     let savedContainer = $('<div>');
     let cureType = randomBtnEl.attr("data-cure");
-    savedContainer.addClass("col s12 teal ligten-4 saved-" + cureType + "-container valign-wrapper " + cureType + "-" + index);
+    savedContainer.addClass("col s12 teal lighten-2 saved-" + cureType + "-container valign-wrapper " + cureType + "-" + index);
     savedContainer.attr("index-number", "" + index);
     //this section creates the saved cure container i.e. the section where all of the saved cure lines go
     let savedCure = $('<div>');
