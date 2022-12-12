@@ -13,6 +13,8 @@ var storedJokes = [];
 //     getStoredActivities();
 //     getStoredJokes();
 // } 
+    getStoredJokes();
+
 
 function getStoredJokes() {
     if (!localStorage.jokes) {
