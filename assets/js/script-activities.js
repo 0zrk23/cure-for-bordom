@@ -8,12 +8,13 @@ var saveBtn = $('.save-btn');
 var storedData = [];
 
 
-init() 
+// init() 
 
-function init() {
-    getStoredActivities() 
-
-} 
+// function init() {
+//     // console.log("im here"
+//     getStoredActivities();
+//     getStoredJokes();
+// } 
 
 function getStoredActivities() {
     if (!localStorage.activities) {
@@ -26,31 +27,36 @@ function getStoredActivities() {
 
 
 randomBtnEl.click(function(event) {
-   var cureType = $(this).attr("data-cure");
+   var cureType = randomBtnEl.attr("data-cure");
 //    console.log(cureType)
-   if (cureType === "Activity") {
-   fetchAPI(random);
-   }
+     if (cureType === "Activity") {
+        fetchActivityAPI();
+        return;
+    }
+    if (cureType === "Joke") {
+        fetchJokeAPI();
+        return;
+    }
 }
 ) 
 
 
-function fetchAPI() {
+function fetchActivityAPI() {
     if (!activityTypeForm) {
     return;
     }
-    console.log('https://www.boredapi.com/api/activity?type=' + activityTypeForm.val() + '&minprice=0&maxprice=' + price.val());
+    // console.log('https://www.boredapi.com/api/activity?type=' + activityTypeForm.val() + '&minprice=0&maxprice=' + price.val());
     fetch('https://www.boredapi.com/api/activity?type=' + activityTypeForm.val() + '&minprice=0&maxprice=' + price.val())
     .then(function (response) {
         if (response.ok) {
         response.json().then(function(data){
-            console.log(data);
+            // console.log(data);
         localStorage.setItem("generatedActivity", JSON.stringify(data.activity));
         if (data.error) {
             renderError();
 
         } else {
-            renderResults(data);
+            renderActivities(data);
             
         }
         
@@ -59,49 +65,66 @@ function fetchAPI() {
     )};
 
 saveBtn.click(function(event) {
-    saveData()
-
+    // console.log('here');
+    saveActivities();
+    saveJokes();
 }
 )
 
-function saveData() { 
+function saveActivities(target) { 
+    
+    var cureType = randomBtnEl.attr('data-cure');
+    // console.log(cureType);
+    if (cureType !== "Activity") {
+        // console.log("im here")
+        return;
+    }
     if (!localStorage.generatedActivity) {
+        resultsDisplay.empty();
+        var error = $("<p>");
+        error.addClass("results red-text");
+        error.text("Please generate a new activity before trying to save")
+        resultsDisplay.append(error);
         return;
     } 
     var generatedActivity = JSON.parse(localStorage.getItem("generatedActivity"));
     if (storedData.includes(generatedActivity)) {
+        // console.log('i am here')
+        resultsDisplay.empty();
+        var error = $("<p>");
+        error.addClass("results red-text");
+        error.text("You already have this activity saved, Please generate a new one")
+        resultsDisplay.append(error);
         return;
     }
     
     storedData.push(generatedActivity);
     // console.log(storedData)
-    localStorage.activities = JSON.stringify(storedData)
-
-    
-   
-
+    localStorage.activities = JSON.stringify(storedData);
+    localStorage.removeItem("generatedActivity");
+    renderSavedData();
 }
 
 
 function renderError() {
     $(".results-display").empty();
     var error = $("<p>");
-    error.addClass("results");
+    error.addClass("results red-text");
     $(".results-display").append(error);
-    $(".results").text("Results do not exist for these parameters. Try different values.");
+    $(".results").text("Results do not exist for these parameters. Please try different values.");
     // console.log(data.error);
 
 
 }
 
-function renderResults(data) {
+function renderActivities(data) {
 
     $(".results-display").empty();
     var results = $("<p>");
     results.addClass("results");
     $(".results-display").append(results);
     $(".results").text(data.activity);
-    console.log(data.activity);
+    // console.log(data.activity);
 } 
 
 
