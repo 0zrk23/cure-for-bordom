@@ -20,7 +20,7 @@ var storedData = [];
 
 function getStoredActivities() {
     if (!localStorage.activities) {
-        localStorage.setItem("activities", "");
+        localStorage.setItem("activities", storedData);
         return;
     } 
     console.log("imhere")
