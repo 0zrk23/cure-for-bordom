@@ -81,6 +81,7 @@
     border-radius: 10px;
 }
 
-.saved-cure-container{
+.saved-Activity-container,
+.saved-Joke-container{
     margin: 5px 0 !important;
 }

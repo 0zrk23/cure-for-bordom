@@ -28,9 +28,22 @@ cureBtn.click(function(event){
     if($(this).attr("data-cure") === "Joke"){
         jokeForms.show();
         activityForms.hide();
+        $(".results-display").empty();
+        var results = $("<p>");
+        results.addClass("results");
+        results.text("Please use the form to generate a joke")
+        $(".results-display").append(results);
+        // $(".results").text(data.activity);
+        // console.log(data.activity);
     } else {
         jokeForms.hide();
         activityForms.show();
+        $(".results-display").empty();
+        var results = $("<p>");
+        results.addClass("results");
+        results.text("Please use the forms to generate an activity")
+        $(".results-display").append(results);
+        // $(".results").text(data.activity);
     }
     renderSavedData();
 });
@@ -56,7 +69,7 @@ function renderSavedData(){
         savedData = JSON.parse(localStorage.activities);
         //for each of the saved information, append it to the display section
         for(let i = 0; i < savedData.length; i++){
-            appendSavedData([savedData[i]]);
+            appendSavedData([savedData[i]],i);
         }
     } else {
         // check if there is any local storage for jokes
@@ -64,20 +77,23 @@ function renderSavedData(){
             appendSavedData(["There are currently no saved jokes.","Use some of the inputs above to generate a random joke"]);
             return;
         }
-        // savedData = JSON.parse(localStorage.jokes);
-        savedData = [["What did the duck say to the farmer?","Quack"],["How did the duck cross the road","It flew"]];
-        console.log(savedData)
+        savedData = JSON.parse(localStorage.jokes);
+        // savedData = [["What did the duck say to the farmer?","Quack"],["How did the duck cross the road","It flew"]];
+        // console.log(savedData)
         //for each of the saved information, append it to the display section
-        for(let i = 0; i < savedData.length; i++){
-            appendSavedData(savedData[i]);
+        for(var i = 0; i < savedData.length; i++){
+            appendSavedData(savedData[i],i);
         }
     }
 }
 
-function appendSavedData(data){
+function appendSavedData(data,index){
     //this line creates results container
+    // console.log(index);
     let savedContainer = $('<div>');
-    savedContainer.addClass("col s12 saved-cure-container valign-wrapper");
+    let cureType = randomBtnEl.attr("data-cure");
+    savedContainer.addClass("col s12 saved-" + cureType + "-container valign-wrapper " + cureType + "-" + index);
+    savedContainer.attr("index-number", "" + index);
     //this section creates the saved cure container i.e. the section where all of the saved cure lines go
     let savedCure = $('<div>');
     savedCure.addClass("saved-cure col s11 teal ligten-4 center-align");
@@ -112,8 +128,58 @@ function appendSavedData(data){
 
 //this event listener will delete the saved container that it is attached to
 savedResults.click(function(event){
-    
+    event.stopPropagation();
+    let cureType = randomBtnEl.attr("data-cure");
+    let index = 0;
+    if($(event.target).hasClass("del-btn")){
+        // console.log('here')
+        index = $(event.target).parent().attr("index-number");
+        // console.log(index);
+        // console.log($(".index-"+ index));
+        $("." + cureType + "-" + index).remove();
+        removeData(cureType,index)
+    }
+    if($(event.target).hasClass("material-icons")){
+        // console.log('is here')
+        index = $(event.target).parent().parent().attr("index-number");
+        // console.log(index);
+        // console.log($(".index-"+ index));
+        $("." + cureType + "-" + index).remove();
+        removeData(cureType,index)
+    }
+    var savedElements = $(".saved-" + cureType + "-container");
+    // console.log(savedElements.length)
+    savedElements.each(function(index){
+        for(let i = 0; i < savedElements.length + 1; i++){
+            // console.log('here')
+            // console.log(cureType + '-' + i);
+            savedElements.removeClass(cureType + '-' + i);
+            
+        }
+        
+        // console.log(cureType + '-' + index);
+        // $(savedElements[index]).addClass(cureType + '-' + index);
+        // console.log(savedElements[index])
+        for(let i = 0; i < savedElements.length; i++){
+            $(savedElements[i]).addClass(cureType + '-' + i);
+            $(savedElements[i]).attr("index-number", "" + i);
+        }
+    })
 })
+
+function removeData(cureType,index){
+    if(cureType === "Activity"){
+        // console.log(storedData[index]);
+        storedData.splice(index,1)
+        // console.log(storedData);
+        localStorage.activities = JSON.stringify(storedData);
+    } else {
+        // console.log(storedJokes[index]);
+        storedJokes.splice(index,1)
+        // console.log(storedJokes);
+        localStorage.activities = JSON.stringify(storedJokes);
+    }
+}
 
 $(document).ready(function(){
     $('select').formSelect();

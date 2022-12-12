@@ -4,21 +4,23 @@ var JokesBtnEl = $('.Jokes');
 var JokeTypeForm = $('.joke-type-form');
 var saveBtnEl = $('.save-btn');
 var resultsDisplay = $(".results-display");
-var storedData = [];
+var storedJokes = [];
 
-// init();
+init() 
 
-// function init() {
-//     getStoredJokeForms()
-// }
+function init() {
+    // console.log("im here");
+    getStoredActivities();
+    getStoredJokes();
+} 
 
-// function getStoredJokeForms() {
-//     if (!localStorage.jokes) {
-//         localStorage.setItem("jokes", "");
-//         return;
-//     }
-//     storedData = JSON.parse(localStorage.jokes);
-// }
+function getStoredJokes() {
+    if (!localStorage.jokes) {
+        localStorage.setItem("jokes", "");
+        return;
+    }
+    storedJokes = JSON.parse(localStorage.jokes);
+}
 
 // randomBtnEl.click(function (event) {
 //         var cureType = $(this).attr('data-cure');
@@ -41,7 +43,8 @@ function fetchJokeAPI() {
         return;
     }
     if(jokeType === ""){
-
+        // console.log("i am here");
+        jokeType = "general"
     }
     let url = 'https://official-joke-api.appspot.com/jokes/' + jokeType + '/random';
     fetch(
@@ -52,10 +55,11 @@ function fetchJokeAPI() {
                 // console.log(data[0]);
                 let result = data[0];
                 // console.log([result.setup,result.punchline]);
-                let resultJoke = [result.setup,result.punchline];
-                // console.log(resultJoke);
+                let resultJoke = result.setup.split("\n");
+                resultJoke.push(result.punchline);
+                console.log(resultJoke);
                 localStorage.setItem('generatedJoke', JSON.stringify(resultJoke));
-                renderResults();
+                renderJokes();
                 // if (data.error) {
                 //     renderError();
                 // } else {
@@ -75,42 +79,73 @@ function saveJokes() {
     
     var cureType = randomBtnEl.attr('data-cure');
     if (cureType !== "Joke") {
-        
-        return;
-    }
-    if (!localStorage.Joke) {
         return;
     }
     
+    if (!localStorage.generatedJoke) {
+        resultsDisplay.empty();
+        var error = $("<p>");
+        error.addClass("results red-text");
+        error.text("Please generate a new joke before trying to save")
+        resultsDisplay.append(error);
+        return;
+    }
+    // console.log("iamhere")
+    // console.log(JSON.parse(localStorage.generatedJoke));
+    var generatedJoke = JSON.parse(localStorage.getItem("generatedJoke"));
+    // console.log(storedJokes.includes(generatedJoke));
+    if(storedJokes.length === 0){
+        storedJokes[0] = generatedJoke;
+        localStorage.jokes = JSON.stringify(storedJokes);
+        localStorage.removeItem("generatedJoke");
+        renderSavedData();
+        return;
+    } else {
+        for(i = 0; i < storedJokes.length; i++){
+            let index1 = 0;
+            let index2 = 0;
+            if(storedJokes[i].length > 2){
+                index1 = 2;
+            }
+            if(generatedJoke.length > 2){
+                index2 = 2;
+            }
+            if(storedJokes[i][index1] === generatedJoke[index2]){
+                // console.log('i am here')
+                resultsDisplay.empty();
+                var error = $("<p>");
+                error.addClass("results red-text");
+                error.text("You already have this joke saved, Please generate a new one")
+                resultsDisplay.append(error);
+                return;
+            }
+        }
+    }
+    console.log("imhere")
+    storedJokes.push(generatedJoke);
+    localStorage.jokes = JSON.stringify(storedJokes);
+    localStorage.removeItem("generatedJoke");
+    renderSavedData();
 }
 
 function renderError() {
     resultsDisplay.empty();
     var error = $("<p>");
-    error.addClass("results");
-    error.text("Please select a joke type before generating random joke")
+    error.addClass("results red-text");
+    error.text("Please select a joke type before generating a joke")
     resultsDisplay.append(error);
 }
 
-function renderResults() {
+function renderJokes() {
     let data = JSON.parse(localStorage.generatedJoke);
     // console.log(data);
     resultsDisplay.empty();
-    let setup = $('<p>');
-    setup.text(data[0])
-    setup.addClass("results");
-    resultsDisplay.append(setup);
-    let punchline = $('<p>');
-    punchline.text(data[1]);
-    punchline.addClass("results");
-    resultsDisplay.append(punchline);
-   
-    // $(".results-display").empty();
-    // var  = $("<p>");
-    // error.addClass("results");
-    // $(".results-display").append(error);
-    // $(".current-joke-setup").text(data.setup);
-    // $(".current-joke-punchline").text(data.punchline);
+    for(let i = 0; i < data.length; i++){
+        let line = $('<p>');
+        line.text(data[i])
+        line.addClass("results");
+        resultsDisplay.append(line);
+    }
 }
         
 
