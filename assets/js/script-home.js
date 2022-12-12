@@ -15,8 +15,8 @@ init();
 function init(){
     homeContainer.show();
     selectedContainer.hide();
-    // getStoredActivities();
-    // getStoredJokes();
+    getStoredActivities();
+    getStoredJokes();
 }
 
 cureBtn.click(function(event){
@@ -76,7 +76,7 @@ function renderSavedData(){
         }
     } else {
         // check if there is any local storage for jokes
-         console.log("imhere");
+        //  console.log("imhere");
         savedData = JSON.parse(localStorage.jokes);
         if (savedData.length === 0) {
             appendSavedData(["There are currently no saved jokes.","Use some of the inputs above to generate a random joke"]);
