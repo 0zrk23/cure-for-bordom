@@ -12,7 +12,6 @@ init()
 
 function init() {
     getStoredActivities() 
-
 } 
 
 function getStoredActivities() {
@@ -28,14 +27,19 @@ function getStoredActivities() {
 randomBtnEl.click(function(event) {
    var cureType = $(this).attr("data-cure");
 //    console.log(cureType)
-   if (cureType === "Activity") {
-   fetchAPI(random);
-   }
+     if (cureType === "Activity") {
+        fetchActivityAPI();
+        return;
+    }
+    if (cureType === "Joke") {
+        fetchJokeAPI();
+        return;
+    }
 }
 ) 
 
 
-function fetchAPI() {
+function fetchActivityAPI() {
     if (!activityTypeForm) {
     return;
     }
@@ -59,12 +63,17 @@ function fetchAPI() {
     )};
 
 saveBtn.click(function(event) {
-    saveData()
-
+    // console.log('here');
+    saveActivities();
+    saveJokes();
 }
 )
 
-function saveData() { 
+function saveActivities() { 
+    var cureType = $(this).attr('data-cure');
+    if (cureType !== "Activity") {
+        return;
+    }
     if (!localStorage.generatedActivity) {
         return;
     } 
@@ -75,11 +84,7 @@ function saveData() {
     
     storedData.push(generatedActivity);
     // console.log(storedData)
-    localStorage.activities = JSON.stringify(storedData)
-
-    
-   
-
+    localStorage.activities = JSON.stringify(storedData);
 }
 
 

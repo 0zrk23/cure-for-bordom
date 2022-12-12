@@ -85,7 +85,7 @@ function appendSavedData(data){
     savedContainer.append(savedCure);
     //this section creates the delete button for the saved item
     let deleteBtn = $('<a>');
-    deleteBtn.addClass("waves-effect-teal-lighten-2 col s1 red-text center-align btn-large");
+    deleteBtn.addClass("waves-effect-teal-lighten-2 col s1 red-text center-align btn-large del-btn");
     //this section creates the delete icon
     let deleteIcon = $('<i>');
     //add materials icon class to the icon element
@@ -107,13 +107,12 @@ function appendSavedData(data){
     }
     //append the individual saved item to the saved results container
     savedResults.append(savedContainer);
+    // console.log('here first')
 }
 
 //this event listener will delete the saved container that it is attached to
-delBtnEl.click(function(event){
-    event.preventDefault();
-    console.log("i'm here")
-    // savedResults.remove(this);
+savedResults.click(function(event){
+    
 })
 
 $(document).ready(function(){
