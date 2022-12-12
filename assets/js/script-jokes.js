@@ -18,7 +18,7 @@ var storedJokes = [];
 
 function getStoredJokes() {
     if (!localStorage.jokes) {
-        localStorage.setItem("jokes", "");
+        localStorage.setItem("jokes", storedJokes);
         return;
     }
     storedJokes = JSON.parse(localStorage.jokes);
