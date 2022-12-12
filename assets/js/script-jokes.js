@@ -39,7 +39,7 @@ function fetchJokeAPI() {
     var jokeType = JokeTypeForm.val();
     if (!jokeType) {
         // console.log("i am here");
-        renderError();
+        renderJokeError();
         return;
     }
     if(jokeType === ""){
@@ -61,7 +61,7 @@ function fetchJokeAPI() {
                 localStorage.setItem('generatedJoke', JSON.stringify(resultJoke));
                 renderJokes();
                 // if (data.error) {
-                //     renderError();
+                //     renderJokeError();
                 // } else {
                 //     renderResults(resultJoke);
                 // }
@@ -128,7 +128,7 @@ function saveJokes() {
     renderSavedData();
 }
 
-function renderError() {
+function renderJokeError() {
     resultsDisplay.empty();
     var error = $("<p>");
     error.addClass("results red-text");

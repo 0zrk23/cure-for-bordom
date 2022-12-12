@@ -53,7 +53,7 @@ function fetchActivityAPI() {
             // console.log(data);
         localStorage.setItem("generatedActivity", JSON.stringify(data.activity));
         if (data.error) {
-            renderError();
+            renderActivityError();
 
         } else {
             renderActivities(data);
@@ -81,10 +81,14 @@ function saveActivities(target) {
     }
     if (!localStorage.generatedActivity) {
         resultsDisplay.empty();
-        var error = $("<p>");
-        error.addClass("results red-text");
-        error.text("Please generate a new activity before trying to save")
-        resultsDisplay.append(error);
+        var error1 = $("<p>");
+        error1.addClass("results red-text");
+        error1.text("You already have this activity saved.")
+        resultsDisplay.append(error1);
+        var error2 = $("<p>");
+        error2.addClass("results red-text");
+        error2.text("Please generate a new activity before trying to save.")
+        resultsDisplay.append(error2);
         return;
     } 
     var generatedActivity = JSON.parse(localStorage.getItem("generatedActivity"));
@@ -106,7 +110,7 @@ function saveActivities(target) {
 }
 
 
-function renderError() {
+function renderActivityError() {
     $(".results-display").empty();
     var error = $("<p>");
     error.addClass("results red-text");
