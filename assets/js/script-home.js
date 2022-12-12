@@ -37,6 +37,7 @@ cureBtn.click(function(event){
         $(".results-display").append(results);
         // $(".results").text(data.activity);
         // console.log(data.activity);
+        renderSavedData();
     } else {
         jokeForms.hide();
         activityForms.show();
@@ -46,8 +47,9 @@ cureBtn.click(function(event){
         results.text("Please use the forms to generate an activity")
         $(".results-display").append(results);
         // $(".results").text(data.activity);
+        renderSavedData();
     }
-    renderSavedData();
+    
 });
 
 //add event listener for when the home button is clicked to take the user to the home page
@@ -58,6 +60,7 @@ homeBtn.click(function(){
 
 //this function renders all of the saved data
 function renderSavedData(){
+    
     //remove all of the old saved data
     savedResults.empty();
     let cureType = randomBtn.attr("data-cure");
@@ -65,28 +68,30 @@ function renderSavedData(){
     
     if(cureType === "Activity"){
         // check if there is any local storage for activities
-        if (savedData.length === 0) {
+        console.log(storedData.length);
+        if (storedData.length === 0) {
             appendSavedData(["There are currently no saved activities.","Use some of the inputs above to generate a random activity"]);
             return;
         }
-        savedData = JSON.parse(localStorage.activities);
+        storedData = JSON.parse(localStorage.activities);
         //for each of the saved information, append it to the display section
-        for(let i = 0; i < savedData.length; i++){
-            appendSavedData([savedData[i]],i);
+        for(let i = 0; i < storedData.length; i++){
+            appendSavedData([storedData[i]],i);
         }
     } else {
         // check if there is any local storage for jokes
         //  console.log("imhere");
-        if (savedData.length === 0) {
+        if (storedJokes.length === 0) {
             appendSavedData(["There are currently no saved jokes.","Use some of the inputs above to generate a random joke"]);
             return;
         }
-        savedData = JSON.parse(localStorage.jokes);
+        console.log("imhere");
+        storedJokes = JSON.parse(localStorage.jokes);
         // savedData = [["What did the duck say to the farmer?","Quack"],["How did the duck cross the road","It flew"]];
         // console.log(savedData)
         //for each of the saved information, append it to the display section
-        for(var i = 0; i < savedData.length; i++){
-            appendSavedData(savedData[i],i);
+        for(var i = 0; i < storedJokes.length; i++){
+            appendSavedData(storedJokes[i],i);
         }
     }
 }
