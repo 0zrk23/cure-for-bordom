@@ -13,7 +13,7 @@ var storedJokes = [];
 //     getStoredActivities();
 //     getStoredJokes();
 // } 
-    // getStoredJokes();
+    getStoredJokes();
 
 
 function getStoredJokes() {

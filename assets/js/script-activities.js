@@ -15,7 +15,7 @@ var storedData = [];
 //     getStoredActivities();
 //     getStoredJokes();
 // } 
-    // getStoredActivities();
+    getStoredActivities();
     
 
 function getStoredActivities() {
@@ -23,7 +23,6 @@ function getStoredActivities() {
         localStorage.setItem("activities", "");
         return;
     } 
-    console.log("imhere")
     storedData = JSON.parse(localStorage.getItem("activities"));
 
 }
