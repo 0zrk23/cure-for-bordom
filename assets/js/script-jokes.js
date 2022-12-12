@@ -6,13 +6,13 @@ var saveBtnEl = $('.save-btn');
 var resultsDisplay = $(".results-display");
 var storedJokes = [];
 
-init() 
+// init() 
 
-function init() {
-    // console.log("im here");
-    getStoredActivities();
-    getStoredJokes();
-} 
+// function init() {
+//     // console.log("im here");
+//     getStoredActivities();
+//     getStoredJokes();
+// } 
 
 function getStoredJokes() {
     if (!localStorage.jokes) {
